@@ -5,6 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
+var dbMongo = require('./lib/dbMongo.js'); // no es necesario asignarlo a nada
+require('./models/Anuncio.js');
+
+
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -24,6 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/anuncios', require('./routes/anuncios'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
