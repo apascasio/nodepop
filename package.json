@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=nodepop:app:* nodemon ./bin/www"
+    "start": " nodemon ./bin/www",
+    "dev": "DEBUG=nodepop:app:* nodemon ./bin/www",
+    "installDB": "nodemon ./lib/installDB"
   },
   "dependencies": {
+    "async": "^1.4.2",
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",

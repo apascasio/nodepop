@@ -1,0 +1,33 @@
+[
+{
+"nombre":"Prueba",
+ "venta": false,
+ "precio": 10,
+ "foto":"http://localhost:3000/imagenes/anuncios/iphone4.jpg" ,
+"tags": ["iphone","iphone 4"]
+}
+,
+{
+"nombre":"MacPro",
+ "venta": false,
+ "precio": 1096,
+ "foto":"http://localhost:3000/imagenes/anuncios/mac.jpg" ,
+"tags": ["Mac","MacPro"]
+}
+,
+{
+"nombre":"Samsung3",
+ "venta": false,
+ "precio": 10,
+ "foto":"http://localhost:3000/imagenes/anuncios/iphone4.jpg" ,
+"tags": ["iphone","iphone 4"]
+}
+,
+{
+"nombre":"Samsung G",
+ "venta": false,
+ "precio": 650,
+ "foto":"http://localhost:3000/imagenes/anuncios/samsungG.jpg" ,
+"tags": ["samsung","samsung G"]
+}
+]
