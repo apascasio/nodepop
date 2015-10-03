@@ -34,6 +34,11 @@ app.use('/users', users);
 app.use('/anuncios', require('./routes/anuncios'));
 
 
+// API Version 1
+
+app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

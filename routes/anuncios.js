@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-// crea un agente, el mismo en cada post
+// crea un anuncio, el mismo en cada post
 router.post('/', function(req, res, next) {
 
     // crear un registro de anuncio
