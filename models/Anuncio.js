@@ -16,12 +16,21 @@ var anuncioSchema = mongoose.Schema({
 
 
 // metodo estático que devuelve una lista de la BD
-anuncioSchema.statics.lista = function( criterios, callback) {
+anuncioSchema.statics.lista = function( criterios,sort,start,limit, callback) {
 
     // uso .find sin callback para que me de un objeto query sin ejecutar
     var query = Anuncio.find(criterios);
 
-    query.sort('nombre');
+    query.sort('precio');
+
+    //poner limites
+
+    var limit = limit ;
+    query.skip(start);
+
+    query.limit(limit);
+
+    //ejecutar query
 
     query.exec( function(err, rows) {
         if (err) {
