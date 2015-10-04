@@ -5,7 +5,9 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 
-var Usuario = mongoose.model('Usuario'); //
+var Usuario = mongoose.model('Usuario');
+var jwt = require('jsonwebtoken');
+var config  = require('../../config/config');
 
 
 
@@ -23,16 +25,24 @@ router.post('/', function(req, res) {
         criterios.clave = req.query.clave;
     }
 
-    Usuario.getUser(criterios, function(err, lista) {
+    Usuario.getUser(criterios, function(err, user) {
 
-       console.log(lista);
-        if (lista == null) {
+       console.log(user);
+        if (user == null) {
 
             // devolver una confirmación
-            res.json({ok: true, mensaje: 'usuario no autenticado'});
+            res.json({ok: false, mensaje: 'usuario no autenticado'});
         }
         else {
-            res.json({ok: false, mensaje: 'usuario autenticado'});
+            // creamos un token
+           var token = jwt.sign(user, config.jwt.secret, {
+                expiresInMinutes: config.jwt.expiresInMinutes
+            });
+
+           // var token = 'jajfljlauf';
+
+
+            res.json({ok: true, token: token});
         }
     });
 

@@ -32,7 +32,6 @@ usuarioSchema.statics.getUser = function( criterios, callback) {
 
 
 
-
 };
 
 

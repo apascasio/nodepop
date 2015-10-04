@@ -5,12 +5,40 @@ var router = express.Router();
 
 var mongoose = require('mongoose');
 
-var Anuncio = mongoose.model('Anuncio'); //
+var Anuncio = mongoose.model('Anuncio');
+var jwt = require('jsonwebtoken');
+var config  = require('../../config/config');
+
+
+router.get('/', function(req, res, next) {
+    var token = req.body.token ||
+        req.query.token ||
+        req.headers['x-access-token'];
+
+    if(token){
+        jwt.verify(token,config.jwt.secret, function(err, decode){
+            if(err){
+                return res.status(401).json({ok:false, error: 'Token no valido'});
+            }
+            //el usuario esta autenticado y puede seguir
+            next();
+        });
+    }else{
+        return res.status(401).json({ok:false, error: 'Token requerido'});
+
+
+    }
+
+
+
+});
 
 
 
 // devuelve una lista de anuncios en JSON
 router.get('/', function(req, res) {
+
+
 
 
 
