@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-// definir esquema de agente
+// definir esquema de anuncio
 
 var anuncioSchema = mongoose.Schema({
     nombre: String,

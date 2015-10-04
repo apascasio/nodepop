@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 
 var dbMongo = require('./lib/dbMongo.js'); // no es necesario asignarlo a nada
 require('./models/Anuncio.js');
+require('./models/Usuario.js');
 
 
 
@@ -37,6 +38,8 @@ app.use('/anuncios', require('./routes/anuncios'));
 // API Version 1
 
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
+app.use('/apiv1/usuario', require('./routes/apiv1/usuario'));
+app.use('/usuario/authenticate',require('./routes/apiv1/authenticate'));
 
 
 // catch 404 and forward to error handler
