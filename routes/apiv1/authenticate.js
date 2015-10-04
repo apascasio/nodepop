@@ -8,12 +8,22 @@ var mongoose = require('mongoose');
 var Usuario = mongoose.model('Usuario');
 var jwt = require('jsonwebtoken');
 var config  = require('../../config/config');
+var languages = global.config.application.languages;
+//var Messages = require('../../languages/' + 'en');
+var Messages =global.messages;
 
 
 
 
 
-router.post('/', function(req, res) {
+router.post('/:lang(' + languages + ')', function(req, res) {
+
+    global.i18n.setLanguage(req.params.lang, function(req, res){
+
+        Messages = global.lang;
+
+    });
+
     var criterios = {};
 
     // Filtro por email

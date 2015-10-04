@@ -1,6 +1,7 @@
 "use strict";
 
 var mongoose = require('mongoose');
+var Messages =global.messages;
 
 // definir esquema de usuario
 
@@ -28,7 +29,7 @@ usuarioSchema.statics.getUser = function( criterios, callback) {
 
         });
 
-    } else {return callback('usuario no verificado', 'no hay datos'); }
+    } else {return callback('usuario no verificado', Messages.dataNoFound); }
 
 
 

@@ -18,6 +18,21 @@ var users = require('./routes/users');
 
 var app = express();
 
+//internacionalizacion
+/*require('./system/prototype');
+global.config = require('./config/config');
+global.i18n = require('./system/helpers/i18n');
+global.messages = require('./languages/es' );*/
+
+//global.i18n.setLanguage();
+require('./system/prototype');
+global.config = require('./config/config');
+global.i18n = require('./system/helpers/i18n');
+global.messages = require('./languages/es' );
+
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -29,6 +44,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use(function(req,res,next){
+
+  //console.log(req.get('User-Agent'));
+  var esAndroid = req.get('User-Agent').match(/Android/i);
+  req.Android = esAndroid;
+  console.log(req.Android);
+
+  var esIphone = req.get('User-Agent').match(/Iphone/i);
+  req.Iphone = esIphone;
+  console.log(req.Iphone);
+
+  next();
+
+
+
+});
 
 app.use('/', routes);
 app.use('/users', users);

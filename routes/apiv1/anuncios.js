@@ -8,9 +8,18 @@ var mongoose = require('mongoose');
 var Anuncio = mongoose.model('Anuncio');
 var jwt = require('jsonwebtoken');
 var config  = require('../../config/config');
+var languages = global.config.application.languages;
+//var Messages = require('../../languages/' + 'en');
+var Messages =global.messages;
 
 
-router.get('/', function(req, res, next) {
+router.get('/:lang(' + languages + ')', function(req, res, next) {
+
+    global.i18n.setLanguage(req.params.lang, function(req, res){
+
+        Messages = global.lang;
+        console.log(Messages);
+    });
     var token = req.body.token ||
         req.query.token ||
         req.headers['x-access-token'];
@@ -18,13 +27,13 @@ router.get('/', function(req, res, next) {
     if(token){
         jwt.verify(token,config.jwt.secret, function(err, decode){
             if(err){
-                return res.status(401).json({ok:false, error: 'Token no valido'});
+                return res.status(401).json({ok:false, error: Messages.TOKEN_01});
             }
             //el usuario esta autenticado y puede seguir
             next();
         });
     }else{
-        return res.status(401).json({ok:false, error: 'Token requerido'});
+        return res.status(401).json({ok:false, error: Messages.TOKEN_00});
 
 
     }
