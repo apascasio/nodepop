@@ -13,3 +13,7 @@
   * http://domain/apiv1/anuncios
   *http://localhost:3000/apiv1/usuario/es?nombre=nombreusuario&email=email@domain.com&clave=clave (metodo post)
   *http://localhost:3000/usuario/authenticate/en (metodo post)
+
+##Ver API desplegada 
+  * http://apascasio.cloudapp.net/apiv1/anuncios
+  * http://apascasio.cloudapp.net  este es el dominio principal 
